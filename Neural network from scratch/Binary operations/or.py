@@ -6,8 +6,8 @@ def d_sigmoid(z):
 
 data = [
     [(0, 0), 0],
-    [(1, 0), 0],
-    [(0, 1), 0],
+    [(1, 0), 1],
+    [(0, 1), 1],
     [(1, 1), 1]
 ]
 
@@ -48,4 +48,5 @@ for i in range(len(inputs)):
         z = sum(a*b for a, b in zip(inputs[i], [w[0] for w in w_output])) + b_output
         
         output = sigmoid(z)
-        print(inputs[i], '=', output, '=', round(output))
+        print(f"{str(inputs[i]):<10} = {output:<10.4f} =\t{round(output)}")
+
