@@ -48,5 +48,5 @@ for i in range(len(inputs)):
         z = sum(a*b for a, b in zip(inputs[i], [w[0] for w in w_output])) + b_output
         
         output = sigmoid(z)
-        print(f"{str(inputs[i]):<10} = {output:<10.4f} =\t{round(output)}")
+        print(f"{str(inputs[i]):<10} = \t{output:<10.4f} = \t{round(output)}")
 
