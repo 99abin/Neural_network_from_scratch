@@ -1,5 +1,3 @@
-import random
-
 def sigmoid(z):
     return 1 / (1 + 2.7182818 ** (-z))
 
@@ -16,10 +14,13 @@ data = [
 
 inputs = [a for a, b in data]
 
-w_hidden =[[random.uniform(-1, 1) for _ in range(2)] for _ in range(2)]
-b_hidden = [random.uniform(-1, 1) for _ in range(2)]
-w_output = [random.uniform(-1, 1) for _ in range(2)]
-b_output = random.uniform(-1, 1)
+w_hidden =[
+    [0.5, 0,5],
+    [-0.5, -0.5]
+]
+b_hidden = [0.5, -0.5]
+w_output = [0.5, -0.5]
+b_output = 0.5
 
 learn_rate = 0.1
 epoch = 10000
