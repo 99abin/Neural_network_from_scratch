@@ -1,5 +1,6 @@
 import math
 
+# softplus for the activation function
 def softplus(x):
     return math.log(1 + math.exp(x))
     
@@ -49,10 +50,8 @@ for train in range(epoch):
         
         # backpropagation
         loss = (output - dataset[i][1]) ** 2
-        d_loss_output = 2 * (output - dataset[i][1])
-        d_output_Oraw = d_softplus(output_raw)
         
-        d_loss_Oraw = d_loss_output * d_output_Oraw
+        d_loss_Oraw = 2 * (output - dataset[i][1]) * d_softplus(output_raw)
         d_Oraw_hiddenO = w_output
         d_hiddenO_hiddenR = [d_softplus(z) for z in hidden_raw]
         
@@ -61,11 +60,11 @@ for train in range(epoch):
         d_hiddenR_wH = dataset[i][0]
         
         
-        d_loss_wH = [d_loss_output * d_output_Oraw * d_Oraw_hiddenO[p] * d_hiddenO_hiddenR[p] * d_hiddenR_wH for p in range(2)]
-        d_loss_bH = [d_loss_output * d_output_Oraw * d_Oraw_hiddenO[p] * d_hiddenO_hiddenR[p] * 1 for p in range(2)]
+        d_loss_wH = [d_loss_Oraw * d_Oraw_hiddenO[p] * d_hiddenO_hiddenR[p] * d_hiddenR_wH for p in range(2)]
+        d_loss_bH = [d_loss_Oraw * d_Oraw_hiddenO[p] * d_hiddenO_hiddenR[p] * 1 for p in range(2)]
         
-        d_loss_wO = [d_loss_output * d_output_Oraw * d_Oraw_wO[p] for p in range(2)]
-        d_loss_bO = d_loss_output * d_output_Oraw * d_Oraw_b3
+        d_loss_wO = [d_loss_Oraw * d_Oraw_wO[p] for p in range(2)]
+        d_loss_bO = d_loss_Oraw * d_Oraw_b3
         
         # update weight and bias
         w_hidden = [w_hidden[p] - learn_rate * d_loss_wH[p] for p in range(2)]
