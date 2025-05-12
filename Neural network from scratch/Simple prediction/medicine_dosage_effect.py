@@ -1,6 +1,6 @@
 import math
 
-# softplus for the activation function
+# softplus for activation function
 def softplus(x):
     return math.log(1 + math.exp(x))
     
@@ -81,4 +81,6 @@ for i in range(len(dataset)):
         
         output_raw = sum([i * w for i, w in zip(hidden_output, w_output)]) + b_output
         output = softplus(output_raw)
-        print(f"dosage: {dataset[i][0]},\t effectiveness: {output}")
+        percentage = str(round(output * 100, 2)) + '%'
+        
+        print(f"dosage: {dataset[i][0]},\t effectiveness: {percentage}")
