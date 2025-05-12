@@ -1,6 +1,6 @@
 import math
 
-# softplus for activation function
+# softplus for the activation function
 def softplus(x):
     return math.log(1 + math.exp(x))
     
@@ -59,7 +59,7 @@ for train in range(epoch):
         d_Oraw_b3 = 1
         d_hiddenR_wH = dataset[i][0]
         
-        
+        # partial derivative for each weigh and bias
         d_loss_wH = [d_loss_Oraw * d_Oraw_hiddenO[p] * d_hiddenO_hiddenR[p] * d_hiddenR_wH for p in range(2)]
         d_loss_bH = [d_loss_Oraw * d_Oraw_hiddenO[p] * d_hiddenO_hiddenR[p] * 1 for p in range(2)]
         
@@ -83,4 +83,4 @@ for i in range(len(dataset)):
         output = softplus(output_raw)
         percentage = str(round(output * 100, 2)) + '%'
         
-        print(f"dosage: {dataset[i][0]},\t effectiveness: {percentage}")
+        print(f"dosage: {dataset[i][0]} gram \t effectiveness: {percentage}")
