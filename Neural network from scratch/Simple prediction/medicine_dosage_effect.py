@@ -74,13 +74,12 @@ for train in range(epoch):
         b_output -= learn_rate * d_loss_bO
 
 # check
-for i in range(len(dataset)):
-        # forward pass
-        hidden_raw = [w * dataset[i][0] + bias for w, bias in zip(w_hidden, b_hidden)]
-        hidden_output = [softplus(z) for z in hidden_raw]
+dosage = float(input('input a dosage in gram: '))
+hidden_raw = [w * dosage + bias for w, bias in zip(w_hidden, b_hidden)]
+hidden_output = [softplus(z) for z in hidden_raw]
         
-        output_raw = sum([i * w for i, w in zip(hidden_output, w_output)]) + b_output
-        output = softplus(output_raw)
-        percentage = str(round(output * 100, 2)) + '%'
-        
-        print(f"dosage: {dataset[i][0]} gram \t effectiveness: {percentage}")
+output_raw = sum([i * w for i, w in zip(hidden_output, w_output)]) + b_output
+output = softplus(output_raw)
+percentage = str(round(output * 100, 2)) + '%'
+
+print(f"the efectiveness is {percentage}")
