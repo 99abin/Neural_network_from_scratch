@@ -64,7 +64,7 @@ for train in range(epoch):
         b_output -= learn_rate * d_loss_bO
 
 # check
-height = float(input("Height: "))
+height = float(input("Height (cm): "))
 hidden_output = [w * (height/200) + bias for w, bias in zip(w_hidden, b_hidden)]
 output = sum([i * w for i, w in zip(hidden_output, w_output)]) + b_output
 print(f"your shoe size is {output:.1f} (EU)")
