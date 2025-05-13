@@ -33,6 +33,7 @@ b_output = 0
 learn_rate = 0.01
 epoch = 10000
 
+# training loop
 for train in range(epoch):
     for i in range(len(dataset)):
         # forward pass
@@ -63,7 +64,7 @@ for train in range(epoch):
         w_output = [w_output[p] - learn_rate * d_loss_wO[p] for p in range(2)]
         b_output -= learn_rate * d_loss_bO
 
-# check
+# result
 height = float(input("Height (cm): "))
 hidden_output = [w * (height/200) + bias for w, bias in zip(w_hidden, b_hidden)]
 output = sum([i * w for i, w in zip(hidden_output, w_output)]) + b_output
