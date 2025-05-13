@@ -39,6 +39,7 @@ b_output = 0
 learn_rate = 0.1
 epoch = 10000
 
+# training loop
 for train in range(epoch):
     for i in range(len(dataset)):
         # forward pass
@@ -73,7 +74,7 @@ for train in range(epoch):
         w_output = [w_output[p] - learn_rate * d_loss_wO[p] for p in range(2)]
         b_output -= learn_rate * d_loss_bO
 
-# check
+# result
 dosage = float(input('input a dosage in gram: '))
 hidden_raw = [w * dosage + bias for w, bias in zip(w_hidden, b_hidden)]
 hidden_output = [softplus(z) for z in hidden_raw]
