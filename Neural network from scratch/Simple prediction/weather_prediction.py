@@ -68,7 +68,9 @@ for i in range(len(raw_dataset)):
     # backpropagation
     crossE = sum(c_entrophy(a, b) for a, b in zip(outputs[i], output))
     
-    d_CE_output =
-    d_output_rOutput =
-    d_rOutput_wOutput =
-    d_wOutput_wHidden = 
+    d_CE_output = -1 / sum(a * b for a, b in zip(outputs[i], output))
+    d_output_rOutput = sum(a * b for a, b in zip(outputs[i], output))
+    # d_rOutput_wOutput = 
+    # d_wOutput_wHidden = 
+    
+    print(d_CE_output)
