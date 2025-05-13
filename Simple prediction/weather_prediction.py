@@ -54,9 +54,11 @@ w_output = [
 ]
 b_output = [1, 0, -1]
 
+# learning rate and epoch
+learn_rate = 0.01
 epoch = 10000
 
-# training
+# training loop
 for i in range(len(raw_dataset)):
     # forward pass
     hidden_raw = [sum(x * y for x, y in zip(inputs[i], weight)) + bias for weight, bias in zip(w_hidden, b_hidden)]
