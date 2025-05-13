@@ -1,3 +1,4 @@
+# sigmoid for the activation function
 def sigmoid(z):
     return 1 / (1 + 2.7182818 ** (-z))
 
@@ -5,6 +6,7 @@ def d_sigmoid(z):
     s = sigmoid(z)
     return s * (1 - s)
 
+# dataset
 data = [
     [(0, 0), 0],
     [(1, 0), 1],
@@ -14,6 +16,7 @@ data = [
 
 inputs = [a for a, b in data]
 
+# weight and bias
 w_hidden =[
     [0.5, 0,5],
     [-0.5, -0.5]
@@ -25,6 +28,7 @@ b_output = 0.5
 learn_rate = 0.1
 epoch = 10000
 
+# training loop
 for train in range(epoch):
     for i in range(len(inputs)):
         #forward pass
@@ -63,7 +67,7 @@ for train in range(epoch):
         
         b_output -= learn_rate * d_loss_b_output
         
-#check
+# result
 for i in range(len(inputs)):
         hidden_raw = [sum(a * b for a, b in zip(w_row, inputs[i])) + bias for w_row, bias in zip(w_hidden, b_hidden)]
         hidden_output = [sigmoid(z) for z in hidden_raw]
