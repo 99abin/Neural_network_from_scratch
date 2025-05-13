@@ -25,7 +25,7 @@ b_output = 0.5
 learn_rate = 0.1
 epoch = 10000
 
-# train loop
+# training loop
 for train in range(epoch):
     for i in range(len(inputs)):
         z = sum(a*b for a, b in zip(inputs[i], [w[0] for w in w_output])) + b_output
