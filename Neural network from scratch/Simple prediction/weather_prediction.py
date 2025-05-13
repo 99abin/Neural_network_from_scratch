@@ -1,17 +1,24 @@
 import math
 
+# ReLu for the hidden layer activation function
 def relu(x):
     return max(0, x)
 
 def d_relu(x):
     return 1 if x > 0 else 0
     
+# softmax for the output layer activation function
 def softmax(p, x, y, z):
     return (math.exp(p)) / ((math.exp(x)) + (math.exp(y)) + (math.exp(z)))
-    
-cerah = 1
-berawan = 2
-hujan = 3
+
+# cross entrophy for calculating loss
+def c_entrophy(t, y):
+    return -t * math.log(y)
+
+# dataset
+cerah = [1, 0, 0]
+berawan = [0, 1, 0]
+hujan = [0, 0, 1]
 
 raw_dataset = [
     [30, 20, cerah],
@@ -34,6 +41,7 @@ raw_dataset = [
 inputs = [[data[0]/32, data[1]/95] for data in raw_dataset]
 outputs = [n[2] for n in raw_dataset]
 
+# weight and bias
 w_hidden = [
     [0.5, -0.25],
     [-0.5, 0.25]
@@ -46,6 +54,9 @@ w_output = [
 ]
 b_output = [1, 0, -1]
 
+epoch = 10000
+
+# training
 for i in range(len(raw_dataset)):
     # forward pass
     hidden_raw = [sum(x * y for x, y in zip(inputs[i], weight)) + bias for weight, bias in zip(w_hidden, b_hidden)]
@@ -53,10 +64,11 @@ for i in range(len(raw_dataset)):
     
     output_raw = [sum(x * y for x, y in zip(hidden_output, weight)) + bias for weight, bias in zip(w_output, b_output)]
     output = [softmax(p, output_raw[0], output_raw[1], output_raw[2]) for p in output_raw]
-    print(output)
-
-
-
-
-
-
+    
+    # backpropagation
+    crossE = sum(c_entrophy(a, b) for a, b in zip(outputs[i], output))
+    
+    d_CE_output =
+    d_output_rOutput =
+    d_rOutput_wOutput =
+    d_wOutput_wHidden = 
