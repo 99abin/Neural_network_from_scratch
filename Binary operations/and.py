@@ -1,4 +1,4 @@
-# activation function
+# sigmoid for the activation function
 def sigmoid(z):
     return 1/(1 + 2.71828 ** (-z))
 
@@ -25,6 +25,7 @@ b_output = 0.5
 learn_rate = 0.1
 epoch = 10000
 
+# training
 for train in range(epoch):
     for i in range(len(inputs)):
         # forward pass
