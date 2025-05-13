@@ -25,7 +25,7 @@ b_output = 0.5
 learn_rate = 0.1
 epoch = 10000
 
-# training
+# training loop
 for train in range(epoch):
     for i in range(len(inputs)):
         # forward pass
