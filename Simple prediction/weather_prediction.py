@@ -72,7 +72,12 @@ for i in range(len(raw_dataset)):
     
     d_CE_output = -1 / sum(a * b for a, b in zip(outputs[i], output))
     d_output_rOutput = sum(a * b for a, b in zip(outputs[i], output))
-    # d_rOutput_wOutput = 
-    # d_wOutput_wHidden = 
+    d_rOutput_wOutput = [a for a in hidden_output]
+    d_rOutput_hOutput = w_output # ?
+    d_hOutput_rHidden = [d_relu(a) for a in hidden_raw]
+    
+    d_rHidden_wHidden = [inputs[i][0], inputs[i][1]]
+    
+    d_crossE_wHidden = d_CE_output * d_output_rOutput * d_rOutput_wOutput * d_hOutput_rHidden * d_rHidden_wHidden
     
     print(d_CE_output)
